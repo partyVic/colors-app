@@ -1,15 +1,23 @@
 import { useState } from 'react';
 import Slider from 'rc-slider';
-import { Select, MenuItem } from '@mui/material';
+import { Select, MenuItem, Snackbar, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import 'rc-slider/assets/index.css';
 import "./Navbar.css"
 
 function Navbar({ level, changeLevel, changeFormat }) {
     const [format, setFormat] = useState("hex")
+    const [open, setOpen] = useState(false)          //used to set the Snackbar showing on/off
 
-    const handleChange = (e) => {
+    //this function calls 2 functions
+    const handleFormatChange = (e) => {
         setFormat(e.target.value)
         changeFormat(e.target.value)
+        setOpen(true)
+    }
+
+    const closeSnackbar = () => {
+        setOpen(false)
     }
 
 
@@ -47,7 +55,7 @@ function Navbar({ level, changeLevel, changeFormat }) {
             </div>
             <div className="select-container" style={{ width: "300px" }}>
                 <Select
-                    onChange={handleChange}
+                    onChange={handleFormatChange}
                     value={format}
                 >
                     <MenuItem value="hex">HEX - #ffffff</MenuItem>
@@ -55,6 +63,27 @@ function Navbar({ level, changeLevel, changeFormat }) {
                     <MenuItem value="rgba">RGBA - rgba(255,255,255,1.0)</MenuItem>
                 </Select>
             </div>
+            <Snackbar
+                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}  //show the orginal position of Snackbar
+                open={open}
+                autoHideDuration={3000}
+                message={<span id="message-id">Format changed to {format.toUpperCase()}</span>}
+                ContentProps={{                 //used for screen reader
+                    "aria-describedby": "message-id"
+                }}
+                // Do NOT use onClose while the Snakebar has import message
+                onClose={closeSnackbar}         //used for close the Snakebar when click anywhere of the screen without just click the X button
+                action={[
+                    <IconButton
+                        onClick={closeSnackbar}
+                        color="inherit"
+                        key="close"             // used for screen reader
+                        aria-label="close"      // used for screen reader
+                    >
+                        <CloseIcon />
+                    </IconButton>
+                ]}
+            />
         </header>
     )
 }

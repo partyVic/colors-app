@@ -16,6 +16,7 @@ function Palette(props) {
         setLevel(newLevel)
     }
 
+    //val = e.target.value passed by child Navbar Component
     const changeFormat = (val) => {
         setFormat(val)
     }
