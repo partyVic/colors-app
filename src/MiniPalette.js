@@ -1,35 +1,43 @@
 import { Box } from "@mui/system"
 
-const main = {
-    backgroundColor: "Purple",
-    border: "3px solid teal",
-}
-
-const secondary = {
-    backgroundColor: "Pink",
-    "& h1": {
-        color: "white",
-        "& span": {
-            backgroundColor: "yellow"
-        }
+const root = {
+    bgColor: "white",
+    border: "1px solid black",
+    borderRadius: "5px",
+    padding: "0.5rem",
+    position: "relative",
+    overflow: "hidden",
+    "&:hover": {
+        cursor: "pointer"
     }
 }
+const colors = {
+    bgColor: "grey",
+}
+const title = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "0",
+    color: "black",
+    paddingTop: "0.5rem",
+    fontSize: "1rem",
+    position: "relative"
+}
+const spanEmoji = {
+    marginLeft: "0.5rem",
+    fontSize: "1.5rem"
+}
 
-function MiniPalette() {
+function MiniPalette(props) {
+    const { paletteName, emoji } = props
     return (
-        <>
-            <Box sx={main}>
-                <div>
-                    <h1>Mini Palette</h1>
-                </div>
+        <Box sx={root}>
+            <Box sx={colors} />
+            <Box sx={title} component="h5">
+                {paletteName} <Box component="span" style={{ spanEmoji }}>{emoji}</Box>
             </Box>
-            <Box sx={secondary}>
-                <section>
-                    <h1>Mini Palette <span>Hello</span></h1>
-                </section>
-                <span>Hello outside</span>
-            </Box >
-        </>
+        </Box>
     )
 }
 
