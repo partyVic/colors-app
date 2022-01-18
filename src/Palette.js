@@ -17,8 +17,6 @@ function Palette(props) {
 
     const palette = generatePalette(findPalette(params.id))
 
-
-
     const [level, setLevel] = useState(500)
     const [format, setFormat] = useState("hex")
     const { colors, paletteName, emoji } = palette

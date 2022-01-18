@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Slider from 'rc-slider';
 import { Select, MenuItem, Snackbar, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -9,7 +10,7 @@ function Navbar({ level, changeLevel, changeFormat }) {
     const [format, setFormat] = useState("hex")
     const [open, setOpen] = useState(false)          //used to set the Snackbar showing on/off
 
-    //this function calls 2 functions
+    // ****** this function calls 2 functions ******
     const handleFormatChange = (e) => {
         setFormat(e.target.value)
         changeFormat(e.target.value)
@@ -24,7 +25,7 @@ function Navbar({ level, changeLevel, changeFormat }) {
     return (
         <header className="Navbar">
             <div className="logo">
-                <a href="#">React Color Picker</a>
+                <Link to="/">React Color Picker</Link>
             </div>
             <div className="slider-container">
                 <span>Level: {level}</span>
