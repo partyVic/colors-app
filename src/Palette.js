@@ -1,15 +1,30 @@
 import { useState } from "react";
+import { useParams } from "react-router";
+import { generatePalette } from './colorHelpers'
+import seedColors from "./seedColors";
 import ColorBox from "./ColorBox"
 import Navbar from "./Navbar";
 import "./Palette.css"
 
 function Palette(props) {
+    const params = useParams()
+    console.log(params)
+
+    // helper function to find the palette from seed function (seedColors)
+    const findPalette = (id) => {
+        return seedColors.find(palette => (palette.id === id))
+    }
+
+    const palette = generatePalette(findPalette(params.id))
+
+
+
     const [level, setLevel] = useState(500)
     const [format, setFormat] = useState("hex")
-    const { colors, paletteName, emoji } = props.palette
+    const { colors, paletteName, emoji } = palette
 
     const colorBoxes = colors[level].map(color => (
-        <ColorBox background={color[format]} name={color.name} key={color.id}/>
+        <ColorBox background={color[format]} name={color.name} key={color.id} />
     ))
 
     const changeLevel = (newLevel) => {
