@@ -8,7 +8,6 @@ import "./Palette.css"
 
 function Palette(props) {
     const params = useParams()
-    console.log(params)
 
     // helper function to find the palette from seed function (seedColors)
     const findPalette = (id) => {
@@ -19,10 +18,15 @@ function Palette(props) {
 
     const [level, setLevel] = useState(500)
     const [format, setFormat] = useState("hex")
-    const { colors, paletteName, emoji } = palette
+    const { colors, paletteName, emoji, id } = palette
 
     const colorBoxes = colors[level].map(color => (
-        <ColorBox background={color[format]} name={color.name} key={color.id} />
+        <ColorBox
+            background={color[format]}
+            name={color.name}
+            key={color.id}
+            moreUrl={`/palette/${id}/${color.id}`}
+        />
     ))
 
     const changeLevel = (newLevel) => {
