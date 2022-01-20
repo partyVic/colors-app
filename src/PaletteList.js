@@ -5,7 +5,7 @@ import { Box } from "@mui/system"
 const styles = {
     root: {
         backgroundColor: "blue",
-        height: "100%",
+        height: "100vh",
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center"
@@ -21,14 +21,15 @@ const styles = {
         color: "white",
         display: "flex",
         width: "100%",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        alignItems: "center",
     },
     palettes: {
         boxSizing: "border-box",
         width: "100%",
         display: "grid",
         gridTemplateColumns: "repeat(3, 30%)",
-        gap: "5%"
+        gap: "2.5rem",
     }
 }
 
