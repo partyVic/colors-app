@@ -45,6 +45,7 @@ const styles = {
 
 function MiniPalette(props) {
     const { paletteName, emoji, colors } = props
+
     const miniColorBoxes = colors.map((color) => (
         <Box
             sx={styles.miniColor}
@@ -54,7 +55,7 @@ function MiniPalette(props) {
     ))
 
     return (
-        <Box sx={styles.root}>
+        <Box sx={styles.root} onClick={props.gotoPalette}>
             <Box sx={styles.colors}>
                 {miniColorBoxes}
             </Box>
