@@ -8,6 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<PaletteList palettes={seedColors} />} />
       <Route path="/palette/:id" element={<Palette />} />
+      <Route path="/palette/:paletteId/:colorId" element={<h1>Hello</h1>} />
     </Routes>
   );
 }
