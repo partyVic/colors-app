@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import "./ColorBox.css"
 
 function ColorBox(props) {
-    const { background, name, moreUrl } = props
+    const { background, name, moreUrl, showLink } = props
     const [copied, setCopied] = useState(false)
 
     //below way to use callback is highly NOT recommended, use useEffect instead
@@ -42,9 +42,13 @@ function ColorBox(props) {
                     </div>
                     <button className="copy-button">Copy</button>
                 </div>
-                <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
-                    <span className="see-more">More</span>
-                </Link>
+
+                {showLink &&
+                    <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
+                        <span className="see-more">More</span>
+                    </Link>
+                }
+
             </div>
         </CopyToClipboard>
     )

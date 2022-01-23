@@ -7,9 +7,9 @@ import seedColors from "./seedColors";
 function App() {
   return (
     <Routes>
+      <Route path="/palette/:paletteId/:colorId" element={<SingleColorPalette />} />
       <Route path="/" element={<PaletteList palettes={seedColors} />} />
       <Route path="/palette/:id" element={<Palette />} />
-      <Route path="/palette/:paletteId/:colorId" element={<SingleColorPalette />} />
     </Routes>
   );
 }

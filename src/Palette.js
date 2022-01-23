@@ -13,7 +13,6 @@ function Palette(props) {
     const findPalette = (id) => {
         return seedColors.find(palette => (palette.id === id))
     }
-
     const palette = generatePalette(findPalette(params.id))
 
     const [level, setLevel] = useState(500)
@@ -26,6 +25,7 @@ function Palette(props) {
             name={color.name}
             key={color.id}
             moreUrl={`/palette/${id}/${color.id}`}
+            showLink={true}                             //show the MORE button and Link
         />
     ))
 
