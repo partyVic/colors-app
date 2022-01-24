@@ -6,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import 'rc-slider/assets/index.css';
 import "./Navbar.css"
 
-function Navbar({ level, changeLevel, changeFormat }) {
+function Navbar({ level, changeLevel, changeFormat, showingAllColors }) {
     const [format, setFormat] = useState("hex")
     const [open, setOpen] = useState(false)          //used to set the Snackbar showing on/off
 
@@ -27,7 +27,8 @@ function Navbar({ level, changeLevel, changeFormat }) {
             <div className="logo">
                 <Link to="/">React Color Picker</Link>
             </div>
-            <div className="slider-container">
+
+            {showingAllColors && <div className="slider-container">
                 <span>Level: {level}</span>
                 <div className="slider">
                     <Slider
@@ -54,6 +55,8 @@ function Navbar({ level, changeLevel, changeFormat }) {
                     />
                 </div>
             </div>
+            }
+            
             <div className="select-container" style={{ width: "300px" }}>
                 <Select
                     onChange={handleFormatChange}
