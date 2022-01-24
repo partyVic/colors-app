@@ -8,11 +8,20 @@
 
     /* solve white spaces between rows */
     /* margin-bottom: -3.5px; Colt's way */
-    vertical-align: top; /*student's way */
-
+    vertical-align: top;
+    /*student's way */
 }
 
-.copy-button {
+.SingleColorPalette .ColorBox {
+    height: 50%;
+}
+
+.ColorBox.go-back {
+    background-color: black;
+}
+
+.copy-button,
+.back-button {
     width: 100px;
     height: 30px;
     position: absolute;
@@ -29,6 +38,10 @@
     color: white;
     text-transform: uppercase;
     border: none;
+    text-decoration: none;
+}
+
+.copy-button {
     opacity: 0;
 }
 
@@ -60,7 +73,7 @@
     height: 30px;
     text-align: center;
     line-height: 30px;
-    text-transform: uppercase;   
+    text-transform: uppercase;
 }
 
 .copy-overlay {
@@ -72,7 +85,7 @@
     transform: scale(0.1);
 }
 
-.copy-overlay.show{
+.copy-overlay.show {
     opacity: 1;
     transform: scale(50);
     z-index: 10;

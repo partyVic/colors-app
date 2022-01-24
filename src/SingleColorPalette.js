@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import { generatePalette } from './colorHelpers';
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import seedColors from './seedColors';
 import PaletteFooter from "./PaletteFooter"
@@ -48,13 +49,18 @@ function SingleColorPalette() {
     }
 
     return (
-        <div className="Palette">
+        <div className="SingleColorPalette Palette">
             <Navbar
                 changeFormat={changeFormat}
                 showingAllColors={false}        //used for on/off changeLevel Slider
             />
-            <div className="Palette-colors">{colorBoxes}</div>
-            <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji}/>
+            <div className="Palette-colors">
+                {colorBoxes}
+                <div className="go-back ColorBox">
+                    <Link to={`/palette/${palette.id}`} className="back-button">Go Back</Link>
+                </div>
+            </div>
+            <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
         </div>
     )
 }
