@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { Link } from "react-router-dom"
+import chroma from "chroma-js"
 import "./ColorBox.css"
 
 function ColorBox(props) {
@@ -23,6 +24,9 @@ function ColorBox(props) {
         }, 1500)
     }, [copied])
 
+    //used for change text color in different color of background
+    const contrast = chroma.contrast(background, "black") < 6;
+
     return (
         <CopyToClipboard text={background} onCopy={changeCopyState}>
             <div style={{ background }} className="ColorBox">
@@ -34,18 +38,18 @@ function ColorBox(props) {
 
                 <div className={`copy-msg ${copied && "show"}`}>
                     <h1>copied</h1>
-                    <p>{background}</p>
+                    <p className={!contrast ? "dark-text" : ""}>{background}</p>
                 </div>
                 <div className="copy-container">
                     <div className="box-content">
-                        <span>{name}</span>
+                        <span className={contrast ? "light-text" : null}>{name}</span>
                     </div>
-                    <button className="copy-button">Copy</button>
+                    <button className={`copy-button ${!contrast && "dark-text"}`}>Copy</button>
                 </div>
 
                 {showLink &&
                     <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
-                        <span className="see-more">More</span>
+                        <span className={`see-more ${!contrast && "dark-text"}`}>More</span>
                     </Link>
                 }
 

@@ -10,7 +10,6 @@ import ColorBox from './ColorBox';
 
 function SingleColorPalette() {
     const [format, setFormat] = useState("hex")
-
     const params = useParams()
 
     // helper function to find the palette from seed function (seedColors)
