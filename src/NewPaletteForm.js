@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import DraggableColorBox from './DraggableColorBox';
 import { ChromePicker } from 'react-color';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -20,6 +21,7 @@ const drawerWidth = 400;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         flexGrow: 1,
+        height: "calc(100vh - 64px)",
         padding: theme.spacing(3),
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -143,12 +145,12 @@ function NewPaletteForm() {
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
-                <ul>
-                    {colors.map(color => (
-                        <li style={{ backgroundColor: color }}>{color}</li>
-                    ))}
-            </ul>
-        </Main>
+
+                {colors.map(color => (
+                    <DraggableColorBox color={color} />
+                ))}
+
+            </Main>
         </Box >
     );
 }
