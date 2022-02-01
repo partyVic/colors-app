@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import { useNavigate } from 'react-router';
 import DraggableColorBox from './DraggableColorBox';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
@@ -65,8 +66,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-function NewPaletteForm() {
+function NewPaletteForm(props) {
     const theme = useTheme();
+    const navigate = useNavigate()
+
     const [open, setOpen] = useState(false);
     const [currentColor, setCurrentColor] = useState("teal")
     const [colors, setColors] = useState([])
@@ -105,10 +108,21 @@ function NewPaletteForm() {
         setNewName(evt.target.value)
     }
 
+    const handleSubmit = () => {
+        let newName = "New Test Palette"
+        const newPalette = {
+            paletteName: newName,
+            colors: colors,
+            id: newName.toLowerCase().replace(/ /g, "-")    //replace with space & -
+        }
+        props.savePalette(newPalette)
+        navigate("/")
+    }
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open}>
+            <AppBar color="default" position="fixed" open={open}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -122,6 +136,13 @@ function NewPaletteForm() {
                     <Typography variant="h6" noWrap component="div">
                         Persistent drawer
                     </Typography>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleSubmit}
+                    >
+                        Save Palette
+                    </Button>
                 </Toolbar>
             </AppBar>
             <Drawer

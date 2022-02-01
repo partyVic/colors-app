@@ -8,13 +8,13 @@ import seedColors from './seedColors';
 import PaletteFooter from "./PaletteFooter"
 import ColorBox from './ColorBox';
 
-function SingleColorPalette() {
+function SingleColorPalette(props) {
     const [format, setFormat] = useState("hex")
     const params = useParams()
 
-    // helper function to find the palette from seed function (seedColors)
+    // helper function to find the palette from seed function (seedColors) [NOW changed to props.palettes]
     const findPalette = (id) => {
-        return seedColors.find(palette => (palette.id === id))
+        return props.palettes.find(palette => (palette.id === id))
     }
     const palette = generatePalette(findPalette(params.paletteId))
 
