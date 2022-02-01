@@ -50,7 +50,7 @@ function Palette(props) {
             <div className="Palette-colors">
                 {colorBoxes}
             </div>
-            <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
+            <PaletteFooter paletteName={paletteName} emoji={emoji} />
         </div>
     )
 }
