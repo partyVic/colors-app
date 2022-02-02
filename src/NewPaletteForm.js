@@ -133,6 +133,11 @@ function NewPaletteForm(props) {
         navigate("/")
     }
 
+    const removeColor = (colorName) => {
+        const newColors = state.colors.filter((color) => (color.name !== colorName))
+        setState({ ...state, colors: newColors })
+    }
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -195,7 +200,7 @@ function NewPaletteForm(props) {
                     onChangeComplete={updateCurrentColor}
                 />
 
-                <ValidatorForm onSubmit={addNewColor}>
+                <ValidatorForm onSubmit={addNewColor} instantValidate={false}>
                     <TextValidator
                         label="Color Name"
                         value={state.newColorName}
@@ -221,7 +226,12 @@ function NewPaletteForm(props) {
                 <DrawerHeader />
 
                 {state.colors.map(color => (
-                    <DraggableColorBox color={color.color} name={color.name} key={color.name} />
+                    <DraggableColorBox
+                        color={color.color}
+                        name={color.name}
+                        key={color.name}
+                        handleClick={() => removeColor(color.name)}
+                    />
                 ))}
 
             </Main>
