@@ -80,11 +80,12 @@ function NewPaletteForm(props) {
     // })
     const [state, setState] = useState({
         currentColor: "teal",
-        colors: [],
+        colors: props.palettes[0].colors,
         newPaletteName: "",                 //used for Validation component for material-ui forms
         newColorName: ""                    //used for Validation component for material-ui forms
     })
 
+    const paletteIsFull = state.colors.length >= props.maxColors
 
     useEffect(() => {
         ValidatorForm.addValidationRule("isColorNameUnique", (value) => {
@@ -121,6 +122,23 @@ function NewPaletteForm(props) {
 
     const handleChange = (evt) => {
         setState({ ...state, [evt.target.name]: evt.target.value })
+    }
+
+    const clearColors = () => {
+        setState({ ...state, colors: [] })
+    }
+
+    const addRandomColor = () => {
+        //pick a random color from existing palettes 
+        const allColors = props.palettes.map(p => p.colors).flat()  //the format is [[{}], [{}], ...], use flat() makes it [{},{},...]
+
+        //makes allColors not duplicate colors
+        const filterdArr = allColors.filter(color => !state.colors.includes(color))
+
+        //make random colors from filterdArr
+        const randomColor = filterdArr[Math.floor(Math.random() * filterdArr.length)]
+
+        setState({ ...state, colors: [...state.colors, randomColor] })
     }
 
     const handleSubmit = () => {
@@ -200,8 +218,17 @@ function NewPaletteForm(props) {
                 <Divider />
                 <Typography variant='h4'>Design Your Palette</Typography>
                 <div>
-                    <Button variant="contained" color="secondary">Clear Palette</Button>
-                    <Button variant="contained" color="primary">Random Color</Button>
+                    <Button variant="contained" color="secondary" onClick={clearColors}>
+                        Clear Palette
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={addRandomColor}
+                        disabled={paletteIsFull}
+                    >
+                        Random Color
+                    </Button>
                 </div>
                 <ChromePicker
                     color={state.currentColor}
@@ -224,9 +251,10 @@ function NewPaletteForm(props) {
                         variant="contained"
                         type="submit"                               //import to set type to let ValidatorForm works
                         color="primary"
-                        style={{ backgroundColor: state.currentColor }}
+                        disabled={paletteIsFull}
+                        style={{ backgroundColor: paletteIsFull ? "grey" : state.currentColor }}
                     >
-                        Add Color
+                        {paletteIsFull ? "Palette Full" : "Add Color"}
                     </Button>
                 </ValidatorForm>
 
@@ -247,6 +275,11 @@ function NewPaletteForm(props) {
             </Main>
         </Box >
     );
+}
+
+//functional component sets defaultProps here
+NewPaletteForm.defaultProps = {
+    maxColors: 20
 }
 
 export default NewPaletteForm;
