@@ -2,7 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router';
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
+import { arrayMoveImmutable } from 'array-move';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 import Box from '@mui/material/Box';
@@ -138,6 +139,14 @@ function NewPaletteForm(props) {
         setState({ ...state, colors: newColors })
     }
 
+    const onSortEnd = ({ oldIndex, newIndex }) => {                   //used for react-sortable-hoc
+        setState({
+            ...state,
+            colors: arrayMoveImmutable(state.colors, oldIndex, newIndex),
+        })
+    };
+
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -225,14 +234,15 @@ function NewPaletteForm(props) {
             <Main open={open}>
                 <DrawerHeader />
 
-                {state.colors.map(color => (
-                    <DraggableColorBox
-                        color={color.color}
-                        name={color.name}
-                        key={color.name}
-                        handleClick={() => removeColor(color.name)}
-                    />
-                ))}
+                <DraggableColorList
+                    colors={state.colors}
+                    removeColor={removeColor}
+
+                    //below used for react-sortable-hoc
+                    axis="xy"
+                    onSortEnd={onSortEnd}
+                    distance={2}            // will not trigger the sorting to happend before you have dragged the colorbox 2px
+                />
 
             </Main>
         </Box >
