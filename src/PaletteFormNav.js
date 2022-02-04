@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button'
+import { Box } from '@mui/system';
 
 
 const drawerWidth = 400;
@@ -19,6 +20,11 @@ const AppBar = styled(MuiAppBar, {
     transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
+
+        //custom added styles
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        heigth: "64px"
     }),
     ...(open && {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -29,6 +35,15 @@ const AppBar = styled(MuiAppBar, {
         }),
     }),
 }));
+
+const styles = {
+    root: {
+        display: "flex"
+    },
+    navBtns: {
+
+    }
+}
 
 
 function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
@@ -46,7 +61,7 @@ function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
     }
 
     return (
-        <div>
+        <Box sx={styles.root}>
             <CssBaseline />
             <AppBar color="default" position="fixed" open={open}>
                 <Toolbar>
@@ -60,9 +75,11 @@ function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Persistent drawer
+                        Create A Palette
                     </Typography>
+                </Toolbar>
 
+                <Box sx={styles.navBtns}>
                     <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
                         <TextValidator
                             label="Palette Name"
@@ -80,10 +97,10 @@ function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
                             Go Back
                         </Button>
                     </Link>
+                </Box>
 
-                </Toolbar>
             </AppBar>
-        </div>
+        </Box>
     );
 }
 
