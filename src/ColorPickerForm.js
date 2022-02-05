@@ -2,7 +2,24 @@ import { useState, useEffect } from 'react';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 import Button from '@mui/material/Button'
+import { Box } from '@mui/system';
+import './ColorPickerForm.css'
 
+const styles = {
+    root:{
+        width:"100%"
+    },
+    addColor: {
+        width: "100%",
+        padding: "1rem",
+        marginTop: "1rem",
+        fontSize: "2rem"
+    },
+    colorNameInput: {
+        width: "100%",
+        // height: "70px"
+    }
+}
 
 function ColorPickerForm({ paletteIsFull, addNewColor, colors }) {
 
@@ -36,7 +53,7 @@ function ColorPickerForm({ paletteIsFull, addNewColor, colors }) {
     }
 
     return (
-        <div>
+        <Box sx={styles.root}>
             <ChromePicker
                 color={state.currentColor}
                 disableAlpha={true}
@@ -45,6 +62,9 @@ function ColorPickerForm({ paletteIsFull, addNewColor, colors }) {
 
             <ValidatorForm onSubmit={handleSubmit} instantValidate={false}>
                 <TextValidator
+                    margin="normal"
+                    variant="filled"
+                    sx={styles.colorNameInput}
                     label="Color Name"
                     value={state.newColorName}
                     name="newColorName"                 //VERY important: used for [evt.target.value] in handleChange
@@ -55,6 +75,7 @@ function ColorPickerForm({ paletteIsFull, addNewColor, colors }) {
                     errorMessages={['Enter a color name', 'Color name must be unique', 'Color already used']}
                 />
                 <Button
+                    sx={styles.addColor}
                     variant="contained"
                     type="submit"                               //import to set type to let ValidatorForm works
                     color="primary"
@@ -64,7 +85,7 @@ function ColorPickerForm({ paletteIsFull, addNewColor, colors }) {
                     {paletteIsFull ? "Palette Full" : "Add Color"}
                 </Button>
             </ValidatorForm>
-        </div>
+        </Box>
     );
 }
 

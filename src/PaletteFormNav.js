@@ -20,11 +20,6 @@ const AppBar = styled(MuiAppBar, {
     transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
-
-        //custom added styles
-        flexDirection: "row",
-        justifyContent: 'space-between',
-        heigth: "64px"
     }),
     ...(open && {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -37,6 +32,11 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const styles = {
+    Appbar:{
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        height: "64px"
+    },
     root: {
         display: "flex"
     },
@@ -63,7 +63,7 @@ function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
     return (
         <Box sx={styles.root}>
             <CssBaseline />
-            <AppBar color="default" position="fixed" open={open}>
+            <AppBar color="default" position="fixed" open={open} sx={styles.Appbar}>
                 <Toolbar>
                     <IconButton
                         color="inherit"

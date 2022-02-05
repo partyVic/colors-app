@@ -41,10 +41,28 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
+
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
+
+const styles = {
+    container: {
+        width: "90%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: 'center',
+    },
+    buttons: {
+        width: "100%"
+    },
+    button: {
+        width: "50%"
+    }
+}
 
 function NewPaletteForm(props) {
     const theme = useTheme();
@@ -132,6 +150,10 @@ function NewPaletteForm(props) {
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
+
+                        //custom style change
+                        display: 'flex',
+                        alignItems: 'center'
                     },
                 }}
                 variant="persistent"
@@ -144,27 +166,30 @@ function NewPaletteForm(props) {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <Typography variant='h4'>Design Your Palette</Typography>
-                <div>
-                    <Button variant="contained" color="secondary" onClick={clearColors}>
-                        Clear Palette
-                    </Button>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={addRandomColor}
-                        disabled={paletteIsFull}
-                    >
-                        Random Color
-                    </Button>
-                </div>
 
-                <ColorPickerForm
-                    paletteIsFull={paletteIsFull}
-                    addNewColor={addNewColor}
-                    colors={state.colors}
-                />
+                <Box sx={styles.container}>
+                    <Typography variant='h4' gutterBottom>Design Your Palette</Typography>
+                    <Box sx={styles.buttons}>
+                        <Button variant="contained" color="secondary" onClick={clearColors} sx={styles.button}>
+                            Clear Palette
+                        </Button>
+                        <Button
+                            sx={styles.button}
+                            variant="contained"
+                            color="primary"
+                            onClick={addRandomColor}
+                            disabled={paletteIsFull}
+                        >
+                            Random Color
+                        </Button>
+                    </Box>
 
+                    <ColorPickerForm
+                        paletteIsFull={paletteIsFull}
+                        addNewColor={addNewColor}
+                        colors={state.colors}
+                    />
+                </Box>
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
