@@ -1,6 +1,6 @@
 import { Box } from "@mui/system"
 import styles from "./styles/MiniPaletteStyles"
-
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function MiniPalette(props) {
     const { paletteName, emoji, colors } = props
@@ -16,6 +16,9 @@ function MiniPalette(props) {
 
     return (
         <Box sx={styles.root} onClick={props.gotoPalette}>
+            <Box sx={styles.delete}>
+                <DeleteIcon sx={styles.deleteIcon}/>
+            </Box>
             <Box sx={styles.colors}>
                 {miniColorBoxes}
             </Box>
