@@ -110,12 +110,10 @@ function NewPaletteForm(props) {
         setState({ ...state, colors: [...state.colors, randomColor] })
     }
 
-    const handleSubmit = (newPaletteName) => {
-        const newPalette = {
-            paletteName: newPaletteName,
-            colors: state.colors,
-            id: newPaletteName.toLowerCase().replace(/ /g, "-")    //replace with space & -
-        }
+    const handleSubmit = (newPalette) => {
+        newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, "-")    //replace with space & -
+        newPalette.colors = state.colors
+        
         props.savePalette(newPalette)
         navigate("/")
     }
