@@ -19,9 +19,16 @@ function PaletteList(props) {
                     <h1>React Colors</h1>
                     <Link to="/palette/new">Create Palette</Link>
                 </Box>
+
                 <Box sx={styles.palettes}>
                     {palettes.map(palette => (
-                        <MiniPalette {...palette} gotoPalette={() => gotoPalette(palette.id)} key={palette.id} />
+                        <MiniPalette
+                            {...palette}
+                            gotoPalette={() => gotoPalette(palette.id)}
+                            key={palette.id}
+                            id={palette.id}
+                            handleDelete={props.deletePalette}
+                        />
                     ))}
                 </Box>
             </Box>

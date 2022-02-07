@@ -3,7 +3,7 @@ import styles from "./styles/MiniPaletteStyles"
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function MiniPalette(props) {
-    const { paletteName, emoji, colors } = props
+    const { paletteName, emoji, colors, handleDelete, id } = props
 
     const miniColorBoxes = colors.map((color) => (
         <Box
@@ -14,14 +14,23 @@ function MiniPalette(props) {
         </Box>
     ))
 
+    const deletePalette = (e) => {
+        e.stopPropagation()
+        handleDelete(id)
+    }
+
     return (
         <Box sx={styles.root} onClick={props.gotoPalette}>
-            <Box sx={styles.delete}>
-                <DeleteIcon sx={styles.deleteIcon}/>
-            </Box>
+
+            <DeleteIcon
+                sx={styles.deleteIcon}
+                onClick={deletePalette}
+            />
+
             <Box sx={styles.colors}>
                 {miniColorBoxes}
             </Box>
+
             <Box sx={styles.title} component="h5">
                 {paletteName} <Box component="span" sx={styles.emoji}>{emoji}</Box>
             </Box>
