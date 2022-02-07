@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import PaletteMetaForm from './PaletteMetaForm';
@@ -35,17 +36,30 @@ const styles = {
     Appbar: {
         flexDirection: "row",
         justifyContent: 'space-between',
+        alignItems:"center",
         height: "64px"
     },
     root: {
         display: "flex"
     },
     navBtns: {
-
+        marginRight: "1rem",
+        "& a":{
+            textDecoration:"none"
+        }
+    },
+    button: {
+        margin: "0 0.5rem"
     }
 }
 
 function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
+    const [formShowing, setFormShowing] = useState(false)
+
+    const showForm = () => {
+        setFormShowing(true)
+    }
+
     return (
         <Box sx={styles.root}>
             <CssBaseline />
@@ -66,17 +80,19 @@ function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
                 </Toolbar>
 
                 <Box sx={styles.navBtns}>
-
-                    <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />
-
                     <Link to="/">
-                        <Button variant="contained" color="secondary">
+                        <Button variant="contained" color="secondary" sx={styles.button}>
                             Go Back
                         </Button>
                     </Link>
+                    <Button variant="contained" onClick={showForm} sx={styles.button}>
+                        SAVE
+                    </Button>
                 </Box>
-
             </AppBar>
+
+            {formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />}
+
         </Box>
     );
 }
