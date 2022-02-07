@@ -13,6 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Button from '@mui/material/Button'
+import styles from './styles/NewPaletteFormStyles';
 
 
 const drawerWidth = 400;
@@ -47,22 +48,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-const styles = {
-    container: {
-        width: "90%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: 'center',
-    },
-    buttons: {
-        width: "100%"
-    },
-    button: {
-        width: "50%"
-    }
-}
 
 function NewPaletteForm(props) {
     const theme = useTheme();
@@ -113,7 +98,7 @@ function NewPaletteForm(props) {
     const handleSubmit = (newPalette) => {
         newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, "-")    //replace with space & -
         newPalette.colors = state.colors
-        
+
         props.savePalette(newPalette)
         navigate("/")
     }

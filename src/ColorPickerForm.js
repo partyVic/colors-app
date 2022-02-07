@@ -4,22 +4,8 @@ import { ChromePicker } from 'react-color';
 import Button from '@mui/material/Button'
 import { Box } from '@mui/system';
 import './ColorPickerForm.css'
+import styles from './styles/ColorPickerFormStyles'
 
-const styles = {
-    root:{
-        width:"100%"
-    },
-    addColor: {
-        width: "100%",
-        padding: "1rem",
-        marginTop: "1rem",
-        fontSize: "2rem"
-    },
-    colorNameInput: {
-        width: "100%",
-        // height: "70px"
-    }
-}
 
 function ColorPickerForm({ paletteIsFull, addNewColor, colors }) {
 

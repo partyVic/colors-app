@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button'
 import { Box } from '@mui/system';
+import styles from './styles/PaletteFormNavStyles'
 
 
 const drawerWidth = 400;
@@ -32,26 +33,6 @@ const AppBar = styled(MuiAppBar, {
     }),
 }));
 
-const styles = {
-    Appbar: {
-        flexDirection: "row",
-        justifyContent: 'space-between',
-        alignItems: "center",
-        height: "64px"
-    },
-    root: {
-        display: "flex"
-    },
-    navBtns: {
-        marginRight: "1rem",
-        "& a": {
-            textDecoration: "none"
-        }
-    },
-    button: {
-        margin: "0 0.5rem"
-    }
-}
 
 function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
     const [formShowing, setFormShowing] = useState(false)
