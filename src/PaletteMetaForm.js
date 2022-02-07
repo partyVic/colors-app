@@ -7,9 +7,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
 
 
-function PaletteMetaForm({ palettes, handleSubmit }) {
+function PaletteMetaForm({ palettes, handleSubmit, hideForm }) {
 
     //be carefully open set to true when use a button to trigger Dialog open/close
     const [open, setOpen] = useState(true);
@@ -21,20 +23,20 @@ function PaletteMetaForm({ palettes, handleSubmit }) {
         })
     }, [newPaletteName])
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+    // const handleClickOpen = () => {
+    //     setOpen(true);
+    // };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+    // const handleClose = () => {
+    //     setOpen(false);
+    // };
 
     const handleChange = (evt) => {
         setNewPaletteName(evt.target.value)
     }
 
     return (
-            <Dialog open={open} onClose={handleClose}>
+            <Dialog open={open} onClose={hideForm}>
                 <DialogTitle>Choose a Palette Name</DialogTitle>
 
                 <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
@@ -42,6 +44,8 @@ function PaletteMetaForm({ palettes, handleSubmit }) {
                         <DialogContentText>
                             Please Enter a Name for your Palette. Make sure it's unique.
                         </DialogContentText>
+
+                        <Picker />
 
                         <TextValidator
                             label="Palette Name"
@@ -67,7 +71,7 @@ function PaletteMetaForm({ palettes, handleSubmit }) {
                     </DialogContent>
 
                     <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={hideForm}>Cancel</Button>
                         <Button variant="contained" color="primary" type="submit">Save Palette</Button>
                     </DialogActions>
 

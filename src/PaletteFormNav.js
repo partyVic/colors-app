@@ -36,7 +36,7 @@ const styles = {
     Appbar: {
         flexDirection: "row",
         justifyContent: 'space-between',
-        alignItems:"center",
+        alignItems: "center",
         height: "64px"
     },
     root: {
@@ -44,8 +44,8 @@ const styles = {
     },
     navBtns: {
         marginRight: "1rem",
-        "& a":{
-            textDecoration:"none"
+        "& a": {
+            textDecoration: "none"
         }
     },
     button: {
@@ -58,6 +58,10 @@ function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
 
     const showForm = () => {
         setFormShowing(true)
+    }
+
+    const hideForm = () => {
+        setFormShowing(false)
     }
 
     return (
@@ -91,7 +95,7 @@ function PaletteFormNav({ palettes, handleSubmit, handleDrawerOpen, open }) {
                 </Box>
             </AppBar>
 
-            {formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} />}
+            {formShowing && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} hideForm={hideForm}/>}
 
         </Box>
     );
