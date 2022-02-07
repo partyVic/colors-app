@@ -22,7 +22,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         flexGrow: 1,
         height: "calc(100vh - 64px)",
-        padding: theme.spacing(3),
+        // padding: theme.spacing(3),
+        padding: "0",
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
@@ -42,6 +43,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
+    width:"100%",
 
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
