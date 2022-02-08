@@ -1,0 +1,31 @@
+/* below styles exclusively for React Transition Group */
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}
+
+.palettes {
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    gap: 2.5rem;
+}
+
+@media screen and (max-width: 991.98px) {
+    .palettes {
+        grid-template-columns: repeat(2, 50%)
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+    .palettes {
+        grid-template-columns: repeat(1, 100%);
+        gap: 1.4rem
+    }
+}

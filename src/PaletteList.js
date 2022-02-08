@@ -1,8 +1,10 @@
 import MiniPalette from "./MiniPalette"
 import { Box } from "@mui/system"
 import { useNavigate } from "react-router"
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Link } from "react-router-dom"
 import styles from './styles/PaletteListStyles'
+import './PaletteList.css'
 
 function PaletteList(props) {
     const { palettes } = props
@@ -20,17 +22,23 @@ function PaletteList(props) {
                     <Link to="/palette/new">Create Palette</Link>
                 </Box>
 
-                <Box sx={styles.palettes}>
+                {/* <Box sx={styles.palettes}> */}
+                <TransitionGroup className="palettes">
                     {palettes.map(palette => (
-                        <MiniPalette
-                            {...palette}
-                            gotoPalette={() => gotoPalette(palette.id)}
-                            key={palette.id}
-                            id={palette.id}
-                            handleDelete={props.deletePalette}
-                        />
+                        // !!!!! important! CSSTransition using classNames, pluralized! NOT className
+                        // when use the "fade" class name, make sure the CSS style sheet uses fade-xxx as well 
+                        <CSSTransition key={palette.id} classNames="fade" timeout={500}>
+                            <MiniPalette
+                                {...palette}
+                                gotoPalette={() => gotoPalette(palette.id)}
+                                key={palette.id}
+                                // id={palette.id}
+                                handleDelete={props.deletePalette}
+                            />
+                        </CSSTransition>
                     ))}
-                </Box>
+                </TransitionGroup>
+                {/* </Box> */}
             </Box>
         </Box>
     )

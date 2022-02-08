@@ -13,8 +13,8 @@ export default {
         backgroundImage: `url(${bg})`
 
     },
-    heading:{
-        fontSize:"2rem"
+    heading: {
+        fontSize: "2rem"
     },
     container: {
         width: "50%",
@@ -39,18 +39,18 @@ export default {
             color: "white"
         }
     },
-    palettes: {
-        boxSizing: "border-box",
-        width: "100%",
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 30%)",
-        gap: "2.5rem",
-        "@media screen and (max-width: 991.98px)": {
-            gridTemplateColumns: "repeat(2, 50%)",
-        },
-        "@media screen and (max-width: 575.98px)": {
-            gridTemplateColumns: "repeat(1, 100%)",
-            gap: "1.4rem",
-        }
-    }
+    // palettes: {
+    //     boxSizing: "border-box",
+    //     width: "100%",
+    //     display: "grid",
+    //     gridTemplateColumns: "repeat(3, 30%)",
+    //     gap: "2.5rem",
+    //     "@media screen and (maxWidth: 991.98px)": {
+    //         gridTemplateColumns: "repeat(2, 50%)",
+    //     },
+    //     "@media screen and (maxWidth: 575.98px)": {
+    //         gridTemplateColumns: "repeat(1, 100%)",
+    //         gap: "1.4rem",
+    //     }
+    // }
 }
