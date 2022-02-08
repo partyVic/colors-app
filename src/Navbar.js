@@ -25,7 +25,7 @@ function Navbar({ level, changeLevel, changeFormat, showingAllColors }) {
     return (
         <header className="Navbar">
             <div className="logo">
-                <Link to="/">React Color Picker</Link>
+                <Link to="/">ReactColorPicker</Link>
             </div>
 
             {showingAllColors && <div className="slider-container">
