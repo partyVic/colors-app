@@ -14,9 +14,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Button from '@mui/material/Button'
 import styles from './styles/NewPaletteFormStyles';
+import {DRAWER_WIDTH} from './constants'
 
 
-const drawerWidth = 400;
+const drawerWidth = DRAWER_WIDTH;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({

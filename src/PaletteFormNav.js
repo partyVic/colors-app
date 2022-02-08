@@ -12,9 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button'
 import { Box } from '@mui/system';
 import styles from './styles/PaletteFormNavStyles'
+import {DRAWER_WIDTH} from './constants'
 
 
-const drawerWidth = 400;
+const drawerWidth = DRAWER_WIDTH;
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',

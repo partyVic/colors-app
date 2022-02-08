@@ -10,6 +10,18 @@ const styles = {
         "&:hover svg": {
             color: "white",
             transform: "scale(1.5)"
+        },
+        "@media screen and (max-width: 1199.98px)": {
+            width:"25%",
+            height:"20%"
+        },
+        "@media screen and (max-width: 991.98px)": {
+            width:"50%",
+            height:"10%"
+        },
+        "@media screen and (max-width: 575.98px)": {
+            width:"100%",
+            height:"5%"
         }
     },
     boxContent: {

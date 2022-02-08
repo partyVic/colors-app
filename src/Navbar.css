@@ -28,7 +28,7 @@
     display: inline-block;
 }
 
-.select-container{
+.select-container {
     margin-left: auto;
     margin-right: 1rem;
 }
@@ -54,3 +54,12 @@
     margin-left: -7px;
     margin-top: -3px;
 } */
+
+@media screen and (max-width: 991.98px) {
+    /* .logo {
+        display: none;
+    } */
+    .slider {
+        width: 150px;
+    }
+}
