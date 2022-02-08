@@ -1,11 +1,20 @@
+import bg from './bg.svg'
+
 export default {
     root: {
-        backgroundColor: "blue",
         height: "100vh",
         overflow: "auto",
+        // overflow:"scroll",
         display: "flex",
         alignItems: "flex-start",
-        justifyContent: "center"
+        justifyContent: "center",
+        /* background by SVGBackgrounds.com */
+        backgroundColor: "#394bad",
+        backgroundImage: `url(${bg})`
+
+    },
+    heading:{
+        fontSize:"2rem"
     },
     container: {
         width: "50%",

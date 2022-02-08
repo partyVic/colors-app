@@ -16,7 +16,7 @@ function PaletteList(props) {
         <Box sx={styles.root}>
             <Box sx={styles.container}>
                 <Box component="nav" sx={styles.nav}>
-                    <h1>React Colors</h1>
+                    <Box component="h1" sx={styles.heading}>React Colors</Box>
                     <Link to="/palette/new">Create Palette</Link>
                 </Box>
 
