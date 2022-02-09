@@ -187,7 +187,7 @@ function NewPaletteForm(props) {
                     //below used for react-sortable-hoc
                     axis="xy"
                     onSortEnd={onSortEnd}
-                    distance={2}            // will not trigger the sorting to happend before you have dragged the colorbox 2px
+                    distance={20}            // will not trigger the sorting to happend before you have dragged the colorbox 20px
                 />
 
             </Main>
