@@ -57,13 +57,14 @@ function PaletteList(props) {
                 <TransitionGroup className="palettes">
                     {palettes.map(palette => (
                         // !!!!! important! CSSTransition using classNames, pluralized! NOT className
-                        // when use the "fade" class name, make sure the CSS style sheet uses fade-xxx as well 
+                        // when use the "fade" class name, make sure the CSS style sheet uses fade-xxx as well
+                        // MUST add key prop on <CSSTransition> 
                         <CSSTransition key={palette.id} classNames="fade" timeout={500}>
                             <MiniPalette
                                 {...palette}
                                 gotoPalette={() => gotoPalette(palette.id)}
                                 key={palette.id}
-                                // id={palette.id}
+                                id={palette.id}
                                 // handleDelete={props.deletePalette}       //this delete method handled by <Dialog>
                                 openDialog={openDialog}
                             />

@@ -1,9 +1,13 @@
+import React from "react";
+import { memo } from "react";
 import { Box } from "@mui/system"
 import styles from "./styles/MiniPaletteStyles"
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function MiniPalette(props) {
-    const { paletteName, emoji, colors, handleDelete, id, openDialog } = props
+    const { paletteName, emoji, colors, handleDelete, id, openDialog, gotoPalette } = props
+
+    console.log(`Rendering ${paletteName}`)
 
     const miniColorBoxes = colors.map((color) => (
         <Box
@@ -21,7 +25,7 @@ function MiniPalette(props) {
     }
 
     return (
-        <Box sx={styles.root} onClick={props.gotoPalette}>
+        <Box sx={styles.root} onClick={gotoPalette}>
 
             <DeleteIcon
                 sx={styles.deleteIcon}
@@ -39,4 +43,8 @@ function MiniPalette(props) {
     )
 }
 
-export default MiniPalette
+//advanced use of React.memo to prevent re-rendering of MiniPalette
+// ONLY memo(Component) NOT working
+// MUST use memo(Component, ()=>true)
+export default memo(MiniPalette, () => true)
+

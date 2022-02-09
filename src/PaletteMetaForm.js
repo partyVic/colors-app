@@ -79,6 +79,7 @@ function PaletteMetaForm({ palettes, handleSubmit, hideForm }) {
                             errorMessages={["Enter Palette Name", "Name already used"]}
                             fullWidth
                             margin="normal"
+                            autoFocus                       //when opening the save palette form, it will focus on the text input
                         />
 
                         {/* below replaced by TextValidator */}
