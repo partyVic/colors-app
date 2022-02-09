@@ -50,7 +50,7 @@ function Navbar({ level, changeLevel, changeFormat, showingAllColors }) {
                                 height: "13px",
                                 marginLeft: "-7px",
                                 marginTop: "-3px",
-                                
+
                             },
                         ]}
                         railStyle={{ height: "8px" }}
@@ -58,7 +58,7 @@ function Navbar({ level, changeLevel, changeFormat, showingAllColors }) {
                 </div>
             </div>
             }
-            
+
             <div className="select-container" style={{ width: "300px" }}>
                 <Select
                     onChange={handleFormatChange}

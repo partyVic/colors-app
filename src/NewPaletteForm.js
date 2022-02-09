@@ -13,6 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Button from '@mui/material/Button'
+import seedColors from './seedColors'
 import styles from './styles/NewPaletteFormStyles';
 import {DRAWER_WIDTH} from './constants'
 
@@ -59,7 +60,7 @@ function NewPaletteForm(props) {
 
     const [open, setOpen] = useState(false);
     const [state, setState] = useState({
-        colors: props.palettes[0].colors,
+        colors: seedColors[0].colors,
     })
 
 
